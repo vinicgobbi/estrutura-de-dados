@@ -152,4 +152,21 @@ public class Abb {
             vetor.insereFinal(no.getItem());
         }
     }
+    	public Abb balancear() {
+		LCItem vetor = CamInOrdem();
+		Abb arvAux = new Abb();
+		balancear (vetor, arvAux, 0, vetor.getQuant()-1);
+		return arvAux;
+	}
+	
+	private void balancear (LCItem vetor, Abb arv, int esq, int dir) {
+		int meio;
+		
+		if (esq <= dir) {
+			meio = (esq+dir)/2;
+			arv.insere(vetor.getItem(meio));
+			balancear(vetor, arv, esq, meio-1);
+			balancear(vetor, arv, meio+1, dir);
+		}
+	}
 }
